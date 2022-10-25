@@ -1,0 +1,14 @@
+{
+  "name": "NAI_magic_wand",
+  "version": "1.0.1",
+  "permissions": [
+    "notifications",
+    "storage"
+  ],
+  "manifest_version": 3,
+  "action": {
+    "default_title": "NAI_magic_wand",
+    "default_icon": "image/icon.png",
+    "default_popup": "popup.html"
+  }
+}

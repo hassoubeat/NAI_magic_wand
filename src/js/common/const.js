@@ -1,0 +1,1 @@
+export const PROMPTS_BOOKMARKS_LIMIT = 300;

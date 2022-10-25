@@ -1,0 +1,19 @@
+// common style
+html { 
+  box-sizing: border-box;
+} 
+
+body {
+  margin: 8px;
+  width: 500px;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+  font-weight: 400;
+}
+
+*:focus {
+  outline: none;
+}
+
+[v-cloak] {
+  display: none;
+}

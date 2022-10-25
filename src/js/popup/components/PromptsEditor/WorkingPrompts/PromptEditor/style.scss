@@ -1,0 +1,176 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  box-sizing: border-box;
+  gap: 2px;
+  user-select: none;
+  cursor: pointer;
+
+  &.editing {
+    border-left: 4px solid #3CB371;
+  }
+
+  &.new {
+    border-left: 4px solid #BBDBF3;
+  }
+
+  &.dragging {
+    opacity: 0.5;
+  }
+
+  &.drag-entering-current {
+    border-left: 4px solid red;
+  }
+  &.drag-entering-top {
+    border-top: 2px solid red;
+  }
+  &.drag-entering-bottom {
+    border-bottom: 2px solid red;
+  }
+
+  .toggle-use {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    cursor: pointer;
+    
+    img {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: auto;
+    }
+  }
+  .prompt {
+    flex-grow: 1;
+    width: 100%;
+    padding: 4px;
+    font-size: 16px;
+    border: none;
+    box-sizing: border-box;
+  }
+  .curly-bracket {
+    position: relative;
+    width: 52px;
+    height: 30px;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 5px;
+
+    &.x1 {
+      background: #efefef;
+    }
+
+    &.x2 {
+      background: #e6e6e6;
+    }
+
+    &.x3 {
+      background: #dcdcdc;
+    }
+
+    &.x4 {
+      background: #d3d3d3;
+    }
+
+    &.x5 {
+      background: #cccccc;
+    }
+
+    &.x6 {
+      background: #c8c8c8;
+    }
+
+    &.x7 {
+      background: #c0c0c0;
+    }
+
+    &.x8 {
+      background: #adadad;
+    }
+
+    &.x9 {
+      background: #a9a9a9;
+    }
+
+    &.x10 {
+      background: #999999;
+    }
+
+
+    .count {
+      position: absolute;
+      bottom: 0;
+      right: 3px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+
+  .update-curly-bracket {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    .update-button {
+      height: 15px;
+      width: 15px;
+      background-image: url("~/src/image/icons/arrow.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .increment {
+      transform: rotateZ(-90deg);
+    }
+
+    .decrement {
+      transform: rotateZ(90deg);
+    }
+  }
+
+  .remove-prompt{
+    width:30px;
+    height:30px;
+    position: relative;
+    margin: 0 2px;
+    cursor: pointer;
+
+    &::before, &::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 2px; /* 棒の幅（太さ） */
+      height: 15px; /* 棒の高さ */
+      background: #333;
+    }
+
+    &::before {
+      transform: translate(-50%,-50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%,-50%) rotate(-45deg);
+    }
+  }
+
+  .prompt-draggable {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    cursor: grab;
+
+    img {
+      width: 100%;
+      width: 15px;
+      height: 15px;
+      margin: 0 auto;
+    }
+  }
+}

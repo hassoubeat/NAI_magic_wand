@@ -2,7 +2,9 @@ import { toRef } from 'vue';
 import getObjectHash from "object-hash";
 import { copy } from "~/js/common/clipboard";
 import { notificate } from "~/js/common/notificate";
+import { bottomToScroll } from "~/js/common/scroll";
 import { setWorkPromptsArray } from '~/js/common/storage';
+import { sleep } from "~/js/common/sleep";
 
 
 export function useEnhancer(props) {
@@ -21,6 +23,8 @@ export function useEnhancer(props) {
     ]
     workPromptsArray.splice(0);
     workPromptsArray.push(...newWorkPrompt);
+    // want to scroll after element is added
+    sleep(100, bottomToScroll);
   };
 
   const updateWorkPrompt = (index, updateWorkPrompt) => {

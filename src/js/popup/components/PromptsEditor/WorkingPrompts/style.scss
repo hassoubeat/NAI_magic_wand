@@ -50,16 +50,5 @@
 .prompts-editor-container{
   display: flex;
   flex-wrap: wrap;
-}
-
-.add-prompt-container {
-  button {
-    width: 100%;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 4px;
-    background: white;
-    border: 1px solid gray;
-    cursor: pointer;
-  }
+  margin-bottom: 40px;
 }

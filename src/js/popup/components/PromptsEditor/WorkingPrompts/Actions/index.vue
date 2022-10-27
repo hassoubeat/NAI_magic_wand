@@ -6,6 +6,12 @@
     >
       <img src="image/icons/plus.png">
     </div>
+    <div 
+      class="button copy-work-prompts" 
+      @click="copyWorkPromptsToClipboard"
+    >
+      <img src="image/icons/copy.png">
+    </div>
   </div>
 </template>
  

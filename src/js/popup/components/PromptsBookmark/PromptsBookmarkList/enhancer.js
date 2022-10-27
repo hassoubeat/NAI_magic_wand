@@ -6,6 +6,9 @@ import {
   getPromptsBookmarkArray as getPromptsBookmarkArrayFromStorage,
   setPromptsBookmarkArray as setPromptsBookmarkArrayToStorage
 } from '~/js/common/storage';
+import { notificate } from "~/js/common/notificate";
+import { bottomToScroll } from "~/js/common/scroll";
+import { sleep } from "~/js/common/sleep";
  
 export function useEnhancer(props) {
   const filterWord = toRef(props, "filterWord");
@@ -25,15 +28,18 @@ export function useEnhancer(props) {
 
   const addPromptsBookmark = (title, prompts) => {
     const newPromptsBookmark = [
+      ...promptsBookmarkArray,
       { 
         title, 
         prompts,
         visibleDetail: false
-      },
-      ...promptsBookmarkArray
+      }
     ]
     promptsBookmarkArray.splice(0);
     promptsBookmarkArray.push(...newPromptsBookmark);
+    notificate("Added PromptsBookmark", `"${title}" bookmark.`);
+    // want to scroll after element is added
+    sleep(100, bottomToScroll);
   };
 
   const updatePromptsBookmark = (index, updatePromptsBookmark) => {

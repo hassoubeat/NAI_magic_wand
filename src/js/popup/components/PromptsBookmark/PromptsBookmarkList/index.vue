@@ -36,7 +36,7 @@
       v-if="promptsBookmarkArray.length >= promptsBookmarksLimited"
       disabled
     >
-      Up to 300 bookmarks...
+      Up to {{ promptsBookmarksLimited }} bookmarks...
     </button>
   </div>
   <AddPromptsBookmarkModal 
@@ -48,7 +48,7 @@
  
 <script>
 
-import AddPromptsBookmarkModal from "./AddPromptsBookmarkModal/index.vue";
+import AddPromptsBookmarkModal from "~/js/popup/components/common/AddPromptsBookmarkModal/index.vue";
 import PromptsBookmarkItem from "./PromptsBookmarkItem/index.vue";
 import { useEnhancer } from "./enhancer";
  

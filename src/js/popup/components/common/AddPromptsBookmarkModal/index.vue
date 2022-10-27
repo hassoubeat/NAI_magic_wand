@@ -16,12 +16,12 @@
           >
         </div>
         <div class="input-prompts">
-          <input 
-            type="text"
+          <textarea
             placeholder="prompts"
             :value="prompts"
+            :readonly="readonlyPrompts"
             @input="inputPrompts"
-          >
+          />
         </div>
         <div class="action-button-list">
           <button
@@ -59,6 +59,15 @@ export default {
     addPromptsBookmark: {
       type: Function,
       required: true,
+    },
+    intialPrompts: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    readonlyPrompts: {
+      type: Boolean,
+      required: false,
     }
   },
   setup(props) {

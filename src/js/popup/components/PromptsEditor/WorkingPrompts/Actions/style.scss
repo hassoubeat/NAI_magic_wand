@@ -1,0 +1,29 @@
+.action-container {
+  display: flex;
+  position: fixed;
+  bottom: 8px;
+  gap: 12px;
+  
+  .button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid gray;
+    background: white;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+
+    &.disabled {
+      background: silver;
+    }
+
+    img {
+      display: block;
+      width: 15px;
+      height: 15px;
+      margin: auto;
+    }
+  }
+}

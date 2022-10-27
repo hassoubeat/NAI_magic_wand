@@ -1,10 +1,14 @@
+import { toRef } from 'vue';
 import getObjectHash from "object-hash";
 import { copy } from "~/js/common/clipboard";
 import { notificate } from "~/js/common/notificate";
+import { bottomToScroll } from "~/js/common/scroll";
 import { setWorkPromptsArray } from '~/js/common/storage';
+import { sleep } from "~/js/common/sleep";
 
 
 export function useEnhancer(props) {
+  const workPrompts = toRef(props, "workPrompts"); 
   const { workPromptsArray } = props;
 
   const addWorkPrompt = () => {
@@ -19,6 +23,8 @@ export function useEnhancer(props) {
     ]
     workPromptsArray.splice(0);
     workPromptsArray.push(...newWorkPrompt);
+    // want to scroll after element is added
+    sleep(100, bottomToScroll);
   };
 
   const updateWorkPrompt = (index, updateWorkPrompt) => {
@@ -70,8 +76,8 @@ export function useEnhancer(props) {
     dragEnteringWorkPromptIndex = index;
   }
 
-  const copyClipboard = async (text) => {
-    await copy(text);
+  const copyWorkPromptsToClipboard = async () => {
+    await copy(workPrompts.value);
     notificate("Copied WorkPrompts", "completed copy.");
   };
 
@@ -84,7 +90,7 @@ export function useEnhancer(props) {
     dropWorkPrompt,
     dragEndWorkPrompt,
     dragEnterWorkPrompt,
-    copyClipboard
+    copyWorkPromptsToClipboard
   };
 }
 

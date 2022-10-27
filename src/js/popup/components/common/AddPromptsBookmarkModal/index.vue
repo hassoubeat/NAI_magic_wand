@@ -61,7 +61,7 @@ export default {
       required: true,
     },
     intialPrompts: {
-      type: Object,
+      type: String,
       required: false,
     },
     readonlyPrompts: {

@@ -36,7 +36,7 @@
       v-if="promptsBookmarkArray.length >= promptsBookmarksLimited"
       disabled
     >
-      Up to 300 bookmarks...
+      Up to {{ promptsBookmarksLimited }} bookmarks...
     </button>
   </div>
   <AddPromptsBookmarkModal 

@@ -1,3 +1,4 @@
+import { toRef } from 'vue';
 import getObjectHash from "object-hash";
 import { copy } from "~/js/common/clipboard";
 import { notificate } from "~/js/common/notificate";
@@ -5,6 +6,7 @@ import { setWorkPromptsArray } from '~/js/common/storage';
 
 
 export function useEnhancer(props) {
+  const workPrompts = toRef(props, "workPrompts"); 
   const { workPromptsArray } = props;
 
   const addWorkPrompt = () => {
@@ -70,8 +72,8 @@ export function useEnhancer(props) {
     dragEnteringWorkPromptIndex = index;
   }
 
-  const copyClipboard = async (text) => {
-    await copy(text);
+  const copyWorkPromptsToClipboard = async () => {
+    await copy(workPrompts.value);
     notificate("Copied WorkPrompts", "completed copy.");
   };
 
@@ -84,7 +86,7 @@ export function useEnhancer(props) {
     dropWorkPrompt,
     dragEndWorkPrompt,
     dragEnterWorkPrompt,
-    copyClipboard
+    copyWorkPromptsToClipboard
   };
 }
 

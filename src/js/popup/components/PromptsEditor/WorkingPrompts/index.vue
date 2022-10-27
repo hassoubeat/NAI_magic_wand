@@ -10,7 +10,7 @@
       <div class="sticky-container">
         <div
           class="copy-icon"
-          @click="copyClipboard(workPrompts)"
+          @click="copyWorkPromptsToClipboard"
         />
       </div>
     </div>

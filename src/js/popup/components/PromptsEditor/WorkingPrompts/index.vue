@@ -33,6 +33,7 @@
     />
   </div>
   <Actions
+    :workPrompts="workPrompts"
     :addWorkPrompt="addWorkPrompt"
     :copyWorkPromptsToClipboard="copyWorkPromptsToClipboard"
   />

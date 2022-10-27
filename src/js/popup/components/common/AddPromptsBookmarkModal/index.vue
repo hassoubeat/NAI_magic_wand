@@ -63,6 +63,7 @@ export default {
     intialPrompts: {
       type: String,
       required: false,
+      default: ""
     },
     readonlyPrompts: {
       type: Boolean,

@@ -12,8 +12,12 @@
     border: 1px solid gray;
     background: white;
     border-radius: 50%;
-    cursor: pointer;
     text-align: center;
+    cursor: pointer;
+
+    &.disabled {
+      background: silver;
+    }
 
     img {
       display: block;

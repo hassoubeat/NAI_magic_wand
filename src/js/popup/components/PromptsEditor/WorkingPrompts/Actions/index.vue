@@ -14,12 +14,13 @@
     </div>
     <div 
       class="button add-prompts-bookmark" 
+      :class="{ disabled: !addablePromptsBookmark }"
       @click="openAddBookmarkModal"
     >
       <img src="image/icons/bookmark.png">
     </div>
   </div>
-  <AddPromptsBookmarkModal 
+  <AddPromptsBookmarkModal
     v-if="visibleAddBookmarkModal"
     :close="closeAddBookmarkModal"
     :addPromptsBookmark="addPromptsBookmark"

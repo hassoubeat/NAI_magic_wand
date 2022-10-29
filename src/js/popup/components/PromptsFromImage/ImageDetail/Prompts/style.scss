@@ -1,0 +1,49 @@
+.loaded-prompts-container {
+
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .prompts {
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin:8px auto;
+
+    .button {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      border: 1px solid gray;
+      background: white;
+      border-radius: 50%;
+      text-align: center;
+      cursor: pointer;
+  
+      &.disabled {
+        background: silver;
+      }
+  
+      img {
+        display: block;
+        width: 15px;
+        height: 15px;
+        margin: auto;
+      }
+    }
+  }
+}

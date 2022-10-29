@@ -1,7 +1,7 @@
 .image-detail-container {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 8px;
 
   .loaded-image-container {
     width: 100%;
@@ -10,26 +10,6 @@
 
     img {
       height: 100%;
-    }
-  }
-
-  .loaded-prompts-container {
-
-    .title {
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .prompts {
-      position: relative;
-      width: 100%;
-      font-size: 14px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid gray;
-      padding: 4px;
-      box-sizing: border-box;
     }
   }
 }

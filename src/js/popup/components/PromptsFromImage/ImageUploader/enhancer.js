@@ -32,7 +32,7 @@ export function useEnhancer(props) {
       }
       updateMetadataPng(metadata);
     } catch (e) {
-      notificate("Load Failed", "The image is unsupported");
+      notificate("Load Failed", "This image is unsupported");
       console.error(e);
     }
   }

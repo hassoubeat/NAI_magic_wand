@@ -9,11 +9,11 @@
     >
       <input type="file" title @change="selectImage" />
       <p>
-        Drag & Drop to ".png" image
+        Drag & Drop to ".png" image made by NovelAI
         <br />
         or 
         <br />
-        Click to select ".png" image
+        Click to select ".png" image made by NovelAI
       </p>
     </div>
   </div>

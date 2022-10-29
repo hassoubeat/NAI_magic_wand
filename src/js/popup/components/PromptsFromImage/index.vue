@@ -35,15 +35,5 @@ export default {
 </script>
  
 <style lang="scss" scoped>
-  .prompts-from-image-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .title {
-    font-size: 20px;
-    font-weight: 700;
-  }
-  
+  @import './style.scss';
 </style>

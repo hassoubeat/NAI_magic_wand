@@ -7,12 +7,16 @@
       @dragleave="dragLeaveImage"
       @drop.stop="dropImage"
     >
-      <input type="file" title @change="selectImage" />
+      <input 
+        type="file"
+        accept="image/png" 
+        @change="selectImage"
+      >
       <p>
         Drag & Drop to ".png" image made by NovelAI
-        <br />
+        <br>
         or 
-        <br />
+        <br>
         Click to select ".png" image made by NovelAI
       </p>
     </div>

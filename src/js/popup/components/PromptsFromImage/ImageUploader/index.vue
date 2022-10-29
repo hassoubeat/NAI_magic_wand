@@ -24,8 +24,26 @@
 import { useEnhancer } from "./enhancer";
  
 export default {
-  setup() {
-    return useEnhancer();
+  props: {
+    updateImageSrc: {
+      type: Function,
+      required: true,
+    },
+    updatePrompts: {
+      type: Function,
+      required: true,
+    },
+    updateMetadataNai: {
+      type: Function,
+      required: true,
+    },
+    updateMetadataPng: {
+      type: Function,
+      required: true,
+    },
+  },
+  setup(props) {
+    return useEnhancer(props);
   }
 }
 </script>

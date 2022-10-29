@@ -3,7 +3,14 @@ import { ref } from "vue";
 import { notificate } from '~/js/common/notificate';
 import { PngParser } from '~/js/common/pngParser';
  
-export function useEnhancer() {
+export function useEnhancer(props) {
+  const {
+    updateImageSrc,
+    updatePrompts,
+    updateMetadataNai,
+    updateMetadataPng,
+  } = props;
+
   const isDragging = ref(false);
 
   const loadImage = async (files) => {
@@ -11,7 +18,23 @@ export function useEnhancer() {
       notificate("Load Failed", 'Only one ".png" file');
       return;
     }
-    const pngParser = new PngParser(await readImage(files[0]));
+
+    try {
+      const pngParser = new PngParser(await readImage(files[0]));
+      const imageSrc = pngParser.getDataURI();
+      const metadata = pngParser.getMetadata();
+      if(imageSrc) updateImageSrc(imageSrc);
+      if(metadata["Comment"]) updateMetadataNai(JSON.parse(metadata["Comment"]));
+      if(metadata["Description"]) {
+        updatePrompts(metadata["Description"]);
+      } else {
+        notificate("Load Failed", "This image has no prompts");  
+      }
+      updateMetadataPng(metadata);
+    } catch (e) {
+      notificate("Load Failed", "The image is unsupported");
+      console.error(e);
+    }
   }
 
   const dragOverImage = () => {

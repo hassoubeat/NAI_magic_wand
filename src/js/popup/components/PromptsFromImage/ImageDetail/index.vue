@@ -5,8 +5,16 @@
     </div>
     <Prompts
       :prompts="prompts"
-    /> 
-    {{ metadataNai }},
+    />
+    <div class="metadata-nai-group-container">
+      <div class="title">Other Parameters</div>
+      <MetadataNai
+        v-for="(value, name) in metadataNai"
+        :key="name"
+        :name="name"
+        :value="value"
+      />
+    </div>
     {{ metadataPng }}
   </div>
 </template>
@@ -14,10 +22,12 @@
 <script>
 
 import Prompts from "./Prompts/index.vue";
+import MetadataNai from "./MetadataNai/index.vue";
  
 export default {
   components: {
-    Prompts
+    Prompts,
+    MetadataNai
   },
   props: {
     imageSrc: {

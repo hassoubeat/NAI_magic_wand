@@ -12,4 +12,16 @@
       height: 100%;
     }
   }
+
+  .metadata-nai-group-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0 auto;
+
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
 }

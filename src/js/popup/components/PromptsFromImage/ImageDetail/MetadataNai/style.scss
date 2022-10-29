@@ -1,0 +1,15 @@
+.metadata-nai-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  
+  .name {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .value {
+    font-size: 14px;
+  }
+}

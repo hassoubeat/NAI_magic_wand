@@ -1,14 +1,19 @@
 <template>
   <div class="prompts-from-image-container">
     <div class="title">Prompts from Image</div>
+    <ImageUploader/>
   </div>
 </template>
  
 <script>
 
+import ImageUploader from "./ImageUploader/index.vue";
 import { useEnhancer } from "./enhancer";
  
 export default {
+  components: {
+    ImageUploader
+  },
   setup() {
   }
 }

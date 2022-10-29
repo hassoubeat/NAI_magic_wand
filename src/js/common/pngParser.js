@@ -55,12 +55,22 @@ export class PngParser {
     return chunks;
   }
 
-  getMetadataArray() {
+  getMetadata() {
+    const metadata = {};
+    for (const chunk of this.getChunks()) {
+      if (chunk.type !== "tEXt") continue;
+      const tEXtMap = this.getMapFromtEXt(this.getString(chunk.dataOffset, chunk.size));
+      metadata[tEXtMap.key] = tEXtMap.value;
+    }
+    return metadata;
+  }
+
+  getMetadataStrArray() {
     const metadataArray = [];
     for (const chunk of this.getChunks()) {
       if (chunk.type !== "tEXt") continue;
       metadataArray.push(
-        this.getMapFromtEXt(this.getString(chunk.dataOffset, chunk.size))
+        this.getString(chunk.dataOffset, chunk.size)
       );
     }
     return metadataArray;

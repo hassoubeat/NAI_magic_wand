@@ -16,10 +16,12 @@ export function useEnhancer() {
   }
 
   const updateMetadataNai = (newMetadataNai) => {
+    Object.keys(metadataNai).forEach(key => delete metadataNai[key])
     Object.assign(metadataNai, { ...newMetadataNai })
   }
 
   const updateMetadataPng = (newMetadataPng) => {
+    Object.keys(metadataPng).forEach(key => delete metadataPng[key])
     Object.assign(metadataPng, { ...newMetadataPng })
   }
 

@@ -19,6 +19,12 @@ export function useEnhancer(props) {
       return;
     }
 
+    // intialize
+    updateImageSrc("");
+    updatePrompts("");
+    updateMetadataNai({});
+    updateMetadataPng({});
+
     try {
       const pngParser = new PngParser(await readImage(files[0]));
       const imageSrc = pngParser.getDataURI();
@@ -46,6 +52,7 @@ export function useEnhancer(props) {
   }
 
   const dropImage = (event) => {
+    isDragging.value = false
     const files = event.dataTransfer.files;
     loadImage(files);
   }

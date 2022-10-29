@@ -4,9 +4,13 @@
       <img :src="imageSrc"/>
     </div>
     <Prompts
+      v-if="prompts"
       :prompts="prompts"
     />
-    <div class="metadata-nai-group-container">
+    <div
+      v-if="Object.keys(metadataNai).length > 0"
+      class="metadata-nai-group-container"
+    >
       <div class="title">Other Parameters</div>
       <MetadataNai
         v-for="(value, name) in metadataNai"
@@ -16,6 +20,7 @@
       />
     </div>
     <MetadataPng
+      v-if="Object.keys(metadataPng).length > 0"
       :metadataPng="metadataPng"
     />
   </div>

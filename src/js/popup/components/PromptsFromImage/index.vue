@@ -1,6 +1,8 @@
 <template>
   <div class="prompts-from-image-container">
-    <div class="title">Prompts from Image</div>
+    <div class="title">
+      Prompts from Image
+    </div>
     <ImageUploader
       :updateImageSrc="updateImageSrc"
       :updatePrompts="updatePrompts"

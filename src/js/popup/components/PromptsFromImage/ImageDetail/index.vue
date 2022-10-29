@@ -1,7 +1,7 @@
 <template>
   <div class="image-detail-container">
     <div class="loaded-image-container">
-      <img :src="imageSrc"/>
+      <img :src="imageSrc">
     </div>
     <Prompts
       v-if="prompts"
@@ -11,7 +11,9 @@
       v-if="Object.keys(metadataNai).length > 0"
       class="metadata-nai-group-container"
     >
-      <div class="title">Other Parameters</div>
+      <div class="title">
+        Other Parameters
+      </div>
       <MetadataNai
         v-for="(value, name) in metadataNai"
         :key="name"

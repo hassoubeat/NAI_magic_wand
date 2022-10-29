@@ -1,7 +1,11 @@
 <template>
   <div class="metadata-nai-container">
-    <div class="name">{{ name }}</div>
-    <div class="value">{{ value }}</div>
+    <div class="name">
+      {{ name }}
+    </div>
+    <div class="value">
+      {{ value }}
+    </div>
   </div>
 </template>
  

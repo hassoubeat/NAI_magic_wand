@@ -15,7 +15,9 @@
         :value="value"
       />
     </div>
-    {{ metadataPng }}
+    <MetadataPng
+      :metadataPng="metadataPng"
+    />
   </div>
 </template>
  
@@ -23,11 +25,13 @@
 
 import Prompts from "./Prompts/index.vue";
 import MetadataNai from "./MetadataNai/index.vue";
+import MetadataPng from "./MetadataPng/index.vue";
  
 export default {
   components: {
     Prompts,
-    MetadataNai
+    MetadataNai,
+    MetadataPng
   },
   props: {
     imageSrc: {

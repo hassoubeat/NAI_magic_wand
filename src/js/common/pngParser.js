@@ -65,17 +65,6 @@ export class PngParser {
     return metadata;
   }
 
-  getMetadataStrArray() {
-    const metadataArray = [];
-    for (const chunk of this.getChunks()) {
-      if (chunk.type !== "tEXt") continue;
-      metadataArray.push(
-        this.getString(chunk.dataOffset, chunk.size)
-      );
-    }
-    return metadataArray;
-  }
-
   getMapFromtEXt(tEXt) {
     // space sperate
     const separateIndex = tEXt.indexOf("\x00");

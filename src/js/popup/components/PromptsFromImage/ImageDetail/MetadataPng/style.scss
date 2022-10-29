@@ -1,0 +1,29 @@
+.metadata-png-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  .toggle-visible-accordion {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    cursor: pointer;
+
+    &.visible {
+      transform:rotate(90deg);
+    }
+    
+    img {
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin: auto;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+}

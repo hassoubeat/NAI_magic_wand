@@ -8,6 +8,7 @@ export function useEnhancer(props) {
   const {
     updateImageSrc,
     updatePrompts,
+    updateNegativePrompts,
     updateMetadataNai,
     updateMetadataPng,
   } = props;
@@ -23,6 +24,7 @@ export function useEnhancer(props) {
     // intialize
     updateImageSrc("");
     updatePrompts("");
+    updateNegativePrompts("");
     updateMetadataNai({});
     updateMetadataPng({});
 
@@ -34,7 +36,10 @@ export function useEnhancer(props) {
       const metadata = pngParser.getMetadata();
       if (validateImageMadeByNovelAI(metadata)) {
         updatePrompts(metadata["Description"]);
-        updateMetadataNai(JSON.parse(metadata["Comment"]));
+        const naiOtherParameters = JSON.parse(metadata["Comment"])
+        updateNegativePrompts(naiOtherParameters["uc"] || "");
+        delete naiOtherParameters["uc"];
+        updateMetadataNai(naiOtherParameters);
       } else {
         notificate("Load Failed", "This image was not created by NovelAI");  
       }

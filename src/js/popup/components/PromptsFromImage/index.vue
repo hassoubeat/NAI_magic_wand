@@ -6,6 +6,7 @@
     <ImageUploader
       :updateImageSrc="updateImageSrc"
       :updatePrompts="updatePrompts"
+      :updateNegativePrompts="updateNegativePrompts"
       :updateMetadataNai="updateMetadataNai"
       :updateMetadataPng="updateMetadataPng"
     />
@@ -13,6 +14,7 @@
       v-if="imageSrc"
       :imageSrc="imageSrc"
       :prompts="prompts"
+      :negativePrompts="negativePrompts"
       :metadataNai="metadataNai"
       :metadataPng="metadataPng"
     />

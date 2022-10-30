@@ -1,7 +1,7 @@
 <template>
   <div class="loaded-prompts-container">
     <div class="title">
-      Prompts
+      {{ title }}
     </div>
     <div class="prompts">
       {{ prompts }}
@@ -29,6 +29,10 @@ import { useEnhancer } from "./enhancer";
  
 export default {
   props: {
+    title: {
+      type: String,
+      required: true,
+    },
     prompts: {
       type: String,
       required: true,

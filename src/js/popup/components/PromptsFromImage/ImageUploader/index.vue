@@ -37,6 +37,10 @@ export default {
       type: Function,
       required: true,
     },
+    updateNegativePrompts: {
+      type: Function,
+      required: true,
+    },
     updateMetadataNai: {
       type: Function,
       required: true,

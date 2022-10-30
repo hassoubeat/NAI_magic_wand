@@ -4,6 +4,7 @@ import { ref, reactive } from "vue";
 export function useEnhancer() {
   const imageSrc = ref("");
   const prompts = ref("");
+  const negativePrompts = ref("");
   const metadataNai = reactive({});
   const metadataPng = reactive({});
 
@@ -13,6 +14,10 @@ export function useEnhancer() {
 
   const updatePrompts = (value) => {
     prompts.value = value;
+  }
+
+  const updateNegativePrompts = (value) => {
+    negativePrompts.value = value;
   }
 
   const updateMetadataNai = (newMetadataNai) => {
@@ -28,10 +33,12 @@ export function useEnhancer() {
   return {
     imageSrc,
     prompts,
+    negativePrompts,
     metadataNai,
     metadataPng,
     updateImageSrc,
     updatePrompts,
+    updateNegativePrompts,
     updateMetadataNai,
     updateMetadataPng
   }

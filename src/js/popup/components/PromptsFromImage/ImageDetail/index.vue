@@ -5,7 +5,13 @@
     </div>
     <Prompts
       v-if="prompts"
+      :title="'Prompts'"
       :prompts="prompts"
+    />
+    <Prompts
+      v-if="negativePrompts"
+      :title="'Negative Prompts'"
+      :prompts="negativePrompts"
     />
     <div
       v-if="Object.keys(metadataNai).length > 0"
@@ -46,6 +52,10 @@ export default {
       required: true,
     },
     prompts: {
+      type: String,
+      required: true,
+    },
+    negativePrompts: {
       type: String,
       required: true,
     },

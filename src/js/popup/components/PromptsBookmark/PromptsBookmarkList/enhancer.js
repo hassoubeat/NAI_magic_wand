@@ -6,7 +6,6 @@ import {
   getPromptsBookmarkArray as getPromptsBookmarkArrayFromStorage,
   setPromptsBookmarkArray as setPromptsBookmarkArrayToStorage
 } from '~/js/common/storage';
-import { notificate } from "~/js/common/notificate";
 import { bottomToScroll } from "~/js/common/scroll";
 import { sleep } from "~/js/common/sleep";
  

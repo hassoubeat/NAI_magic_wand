@@ -2,8 +2,7 @@ import { ref, reactive, computed, onMounted } from 'vue';
 import { PROMPTS_BOOKMARKS_LIMIT } from "~/js/common/const";
 import { notificate } from "~/js/common/notificate";
 import { 
-  getPromptsBookmarkArray as getPromptsBookmarkArrayFromStorage,
-  setPromptsBookmarkArray as setPromptsBookmarkArrayToStorage
+  getPromptsBookmarkArray as getPromptsBookmarkArrayFromStorage
 } from '~/js/common/storage';
 
 export function useEnhancer() {

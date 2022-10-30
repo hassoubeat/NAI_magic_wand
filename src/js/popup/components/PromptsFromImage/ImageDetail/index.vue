@@ -7,11 +7,13 @@
       v-if="prompts"
       :title="'Prompts'"
       :prompts="prompts"
+      :promptsBookmarkArray="promptsBookmarkArray"
     />
     <Prompts
       v-if="negativePrompts"
       :title="'Negative Prompts'"
       :prompts="negativePrompts"
+      :promptsBookmarkArray="promptsBookmarkArray"
     />
     <div
       v-if="Object.keys(metadataNai).length > 0"
@@ -39,6 +41,7 @@
 import Prompts from "./Prompts/index.vue";
 import MetadataNai from "./MetadataNai/index.vue";
 import MetadataPng from "./MetadataPng/index.vue";
+import { useEnhancer } from "./enhancer";
  
 export default {
   components: {
@@ -69,6 +72,7 @@ export default {
     }
   },
   setup() {
+    return useEnhancer();
   }
 }
 </script>

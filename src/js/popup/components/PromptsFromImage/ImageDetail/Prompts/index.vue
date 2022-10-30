@@ -14,6 +14,13 @@
         <img src="image/icons/edit.png">
       </div>
       <div 
+        class="button add-prompts-bookmark" 
+        :class="{ disabled: !addablePromptsBookmark }"
+        @click="openAddBookmarkModal"
+      >
+        <img src="image/icons/bookmark.png">
+      </div>
+      <div 
         class="button copy-prompts" 
         @click="copyPrompts"
       >
@@ -21,13 +28,24 @@
       </div>
     </div>
   </div>
+  <AddPromptsBookmarkModal
+    v-if="visibleAddBookmarkModal"
+    :close="closeAddBookmarkModal"
+    :addPromptsBookmark="addPromptsBookmark"
+    :intialPrompts="prompts"
+    :readonlyPrompts="true"
+  />
 </template>
  
 <script>
 
+import AddPromptsBookmarkModal from "~/js/popup/components/common/AddPromptsBookmarkModal/index.vue";
 import { useEnhancer } from "./enhancer";
  
 export default {
+  components: {
+    AddPromptsBookmarkModal
+  },
   props: {
     title: {
       type: String,
@@ -36,7 +54,11 @@ export default {
     prompts: {
       type: String,
       required: true,
-    }
+    },
+    promptsBookmarkArray: {
+      type: Array,
+      required: true,
+    },
   },
   setup(props) {
     return useEnhancer(props);

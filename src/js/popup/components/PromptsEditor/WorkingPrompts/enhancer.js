@@ -18,7 +18,7 @@ export function useEnhancer(props) {
         originalPrompt: "",
         prompt: "",
         isUse: true,
-        countCurlyBracket: 0
+        weight: 0
       }
     ]
     workPromptsArray.splice(0);

@@ -6,14 +6,18 @@ export function generateWorkPromptsArrayFromString(prompts) {
   return workPromptsArray.map( workPrompt => {
     
     const countCurlyBracket = getCountCurlyBracket(workPrompt);
+    const countSquareBracket = getCountSquareBracket(workPrompt);
+
+    const weight = countCurlyBracket - countSquareBracket;
     workPrompt = removeCurlyBracket(workPrompt);
+    workPrompt = removeSquareBracket(workPrompt);
     workPrompt = workPrompt.trim();
     
     return {
-      originalPrompt: generatePromptsWithCurlyBracket(workPrompt, countCurlyBracket),
+      originalPrompt: generatePromptsWithWeight(workPrompt, weight),
       prompt: workPrompt,
       isUse: true,
-      countCurlyBracket
+      weight
     }
   });
 }
@@ -22,7 +26,7 @@ export function generateWorkPromptsStringFromArray(workPromptsArray) {
   let prompts = "";
   workPromptsArray.forEach((workPrompt, index) => {
     if (!workPrompt.isUse) return;
-    let prompt = generatePromptsWithCurlyBracket(workPrompt.prompt, workPrompt.countCurlyBracket);
+    let prompt = generatePromptsWithWeight(workPrompt.prompt, workPrompt.weight);
 
     prompts = `${prompts} ${prompt}`;
     // Add , expecting last item.
@@ -31,9 +35,15 @@ export function generateWorkPromptsStringFromArray(workPromptsArray) {
   return prompts;
 }
 
-export function generatePromptsWithCurlyBracket(prompt, countByCurlyBracket) {
-  [...Array(countByCurlyBracket)].forEach(() => {
-    prompt = `{${prompt}}`;
+export function generatePromptsWithWeight(prompt, weight) {
+  const absoluteCount = Math.abs(weight);
+
+  [...Array(absoluteCount)].forEach(() => {
+    if (weight > 0) {
+      prompt = `{${prompt}}`;
+    } else {
+      prompt = `[${prompt}]`;
+    }
   });
   return prompt;
 }
@@ -52,5 +62,20 @@ function getCountCurlyBracket(str) {
 function removeCurlyBracket(str) {
   str = str.replace(/{/g, "");
   str = str.replace(/}/g, "");
+  return str;
+}
+
+// count "[ ]" set
+function getCountSquareBracket(str) {
+  const startBracket = (str.match(/\[/g) || []).length;
+  const endBracket = (str.match(/\]/g) || []).length;
+
+  return Math.min(startBracket, endBracket);
+}
+
+// count "[ ]" set
+function removeSquareBracket(str) {
+  str = str.replace(/\[/g, "");
+  str = str.replace(/\]/g, "");
   return str;
 }

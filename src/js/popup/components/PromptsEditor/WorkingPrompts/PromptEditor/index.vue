@@ -23,20 +23,32 @@
       :value="workPrompt.prompt"
       @change="updatePrompt"
     >
-    <div :class="`curly-bracket x${workPrompt.countCurlyBracket}`">
+    <div 
+      v-if="workPrompt.weight >= 0"
+      :class="`curly-bracket x${workPrompt.weight}`"
+    >
       { }
       <div class="count">
-        {{ workPrompt.countCurlyBracket }}
+        {{ workPrompt.weight }}
       </div>
     </div>
-    <div class="update-curly-bracket">
+    <div 
+      v-if="workPrompt.weight < 0"
+      :class="`square-bracket x${Math.abs(workPrompt.weight)}`"
+    >
+      [ ]
+      <div class="count">
+        {{ Math.abs(workPrompt.weight) }}
+      </div>
+    </div>
+    <div class="update-weight">
       <div 
         class="update-button increment"
-        @click="incrementCurlyBracket"
+        @click="incrementWeight"
       />
       <div 
         class="update-button decrement"
-        @click="decrementCurlyBracket"
+        @click="decrementWeight"
       />
     </div>
     <div

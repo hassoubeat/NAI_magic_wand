@@ -1,1 +1,2 @@
 export const PROMPTS_BOOKMARKS_LIMIT = 300;
+export const NOVEL_AI_GENERATE_IMAGE_IDENTIER = "NovelAI";

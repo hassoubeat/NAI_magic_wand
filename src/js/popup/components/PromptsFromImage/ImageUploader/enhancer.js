@@ -1,5 +1,6 @@
 
 import { ref } from "vue";
+import { NOVEL_AI_GENERATE_IMAGE_IDENTIER } from '~/js/common/const';
 import { notificate } from '~/js/common/notificate';
 import { PngParser } from '~/js/common/pngParser';
  
@@ -28,13 +29,14 @@ export function useEnhancer(props) {
     try {
       const pngParser = new PngParser(await readImage(files[0]));
       const imageSrc = pngParser.getDataURI();
-      const metadata = pngParser.getMetadata();
       if(imageSrc) updateImageSrc(imageSrc);
-      if(metadata["Comment"]) updateMetadataNai(JSON.parse(metadata["Comment"]));
-      if(metadata["Description"]) {
+
+      const metadata = pngParser.getMetadata();
+      if (validateImageMadeByNovelAI(metadata)) {
         updatePrompts(metadata["Description"]);
+        updateMetadataNai(JSON.parse(metadata["Comment"]));
       } else {
-        notificate("Load Failed", "This image has no prompts");  
+        notificate("Load Failed", "This image was not created by NovelAI");  
       }
       updateMetadataPng(metadata);
     } catch (e) {
@@ -73,6 +75,14 @@ export function useEnhancer(props) {
 
 function validateUploadImage(files) {
   return (files.length !== 1 || files[0].type === 'image/png');
+}
+
+function validateImageMadeByNovelAI(metadata) {
+  if (metadata["Software"] !== NOVEL_AI_GENERATE_IMAGE_IDENTIER) return false;
+  if (!metadata["Description"]) return false;
+  if (!metadata["Comment"]) return false;
+
+  return true;
 }
 
 function readImage(file) {

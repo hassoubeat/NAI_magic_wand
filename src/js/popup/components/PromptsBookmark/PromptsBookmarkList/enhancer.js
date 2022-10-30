@@ -6,14 +6,13 @@ import {
   getPromptsBookmarkArray as getPromptsBookmarkArrayFromStorage,
   setPromptsBookmarkArray as setPromptsBookmarkArrayToStorage
 } from '~/js/common/storage';
-import { notificate } from "~/js/common/notificate";
 import { bottomToScroll } from "~/js/common/scroll";
 import { sleep } from "~/js/common/sleep";
  
 export function useEnhancer(props) {
   const filterWord = toRef(props, "filterWord");
   const visibleAddBookmarkModal = ref(false);
-  let promptsBookmarkArray = reactive([]);
+  const promptsBookmarkArray = reactive([]);
 
   const filteredPromptsBookmarkArray = computed(() => {
     const reg = new RegExp(filterWord.value);
@@ -26,20 +25,8 @@ export function useEnhancer(props) {
     });
   });
 
-  const addPromptsBookmark = (title, prompts) => {
-    const newPromptsBookmark = [
-      ...promptsBookmarkArray,
-      { 
-        title, 
-        prompts,
-        visibleDetail: false
-      }
-    ]
-    promptsBookmarkArray.splice(0);
-    promptsBookmarkArray.push(...newPromptsBookmark);
-    notificate("Added PromptsBookmark", `"${title}" bookmark.`);
-    // want to scroll after element is added
-    sleep(100, bottomToScroll);
+  const addedPromptsBookmarkCallback = () => {
+    sleep(100, bottomToScroll);  
   };
 
   const updatePromptsBookmark = (index, updatePromptsBookmark) => {
@@ -114,7 +101,7 @@ export function useEnhancer(props) {
   return {
     promptsBookmarkArray,
     filteredPromptsBookmarkArray,
-    addPromptsBookmark,
+    addedPromptsBookmarkCallback,
     updatePromptsBookmark,
     removePromptsBookmark,
     visibleAddBookmarkModal,

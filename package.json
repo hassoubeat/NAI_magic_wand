@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --env=production",
+    "build": "rm -rf ./dist && webpack --env=production",
     "make-package": "rm -rf ./dist && webpack --env=production && zip -r package.zip ./dist",
     "dev": "webpack-dev-server",
     "lint": "eslint src -c ./.eslintrc --ext js,ts,tsx,vue; exit 0",

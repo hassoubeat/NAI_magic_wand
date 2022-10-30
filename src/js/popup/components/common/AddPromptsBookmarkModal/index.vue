@@ -32,7 +32,7 @@
           </button>
           <button
             class="primary"
-            @click="addBookmark"
+            @click="addPromptsBookmark"
           >
             Add
           </button>
@@ -56,8 +56,8 @@ export default {
       type: Function,
       required: true
     },
-    addPromptsBookmark: {
-      type: Function,
+    promptsBookmarkArray: {
+      type: Array,
       required: true,
     },
     intialPrompts: {
@@ -68,6 +68,11 @@ export default {
     readonlyPrompts: {
       type: Boolean,
       required: false,
+    },
+    addedCallBack: {
+      type: Function,
+      required: false,
+      default: undefined
     }
   },
   setup(props) {

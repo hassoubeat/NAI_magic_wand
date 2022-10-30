@@ -44,6 +44,9 @@ function generateMenuList() {
     },{
       identifer: MENU.PROMPTS_BOOKMARK,
       iconSrc: "image/icons/menu/prompts_bookmark.png"
+    },{
+      identifer: MENU.PROMPTS_FROM_IMAGE,
+      iconSrc: "image/icons/menu/prompts_from_image.png"
     }
   ];
 }

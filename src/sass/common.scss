@@ -3,15 +3,26 @@ html {
   box-sizing: border-box;
 } 
 
-body {
-  margin: 8px;
-  width: 500px;
-  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
-  font-weight: 400;
+* {
+  margin:0; padding:0;
+
+  &:focus {
+    outline: none;
+  }
 }
 
-*:focus {
-  outline: none;
+body {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+  font-weight: 400;
+
+  &.development {
+    border-left: 1px solid red;
+  }
+}
+
+.top-container {
+  margin: 8px;
+  width: 500px;
 }
 
 [v-cloak] {

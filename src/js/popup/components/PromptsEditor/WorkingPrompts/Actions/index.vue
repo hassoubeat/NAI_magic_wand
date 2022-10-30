@@ -23,7 +23,7 @@
   <AddPromptsBookmarkModal
     v-if="visibleAddBookmarkModal"
     :close="closeAddBookmarkModal"
-    :addPromptsBookmark="addPromptsBookmark"
+    :promptsBookmarkArray="promptsBookmarkArray"
     :intialPrompts="workPrompts"
     :readonlyPrompts="true"
   />

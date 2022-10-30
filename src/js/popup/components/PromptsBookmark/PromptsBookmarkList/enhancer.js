@@ -13,7 +13,7 @@ import { sleep } from "~/js/common/sleep";
 export function useEnhancer(props) {
   const filterWord = toRef(props, "filterWord");
   const visibleAddBookmarkModal = ref(false);
-  let promptsBookmarkArray = reactive([]);
+  const promptsBookmarkArray = reactive([]);
 
   const filteredPromptsBookmarkArray = computed(() => {
     const reg = new RegExp(filterWord.value);

@@ -48,6 +48,18 @@ export function generatePromptsWithWeight(prompt, weight) {
   return prompt;
 }
 
+export function checkCurrentVersionWorkPromptsArray(workPromptsArray) {
+  try {
+    workPromptsArray.forEach((workPrompt) => {
+      if(!checkCurrentVersionWorkPrompts(workPrompt)) throw "This WorkPrompts created by old version.";
+    });
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+  return true;
+}
+
 // private
 
 // count "{ }" set
@@ -78,4 +90,14 @@ function removeSquareBracket(str) {
   str = str.replace(/\[/g, "");
   str = str.replace(/\]/g, "");
   return str;
+}
+
+// Check old version of workPrompts
+function checkCurrentVersionWorkPrompts(workPrompts) {
+  if (!("originalPrompt" in workPrompts)) return false;
+  if (!("prompt" in workPrompts)) return false;
+  if (!("isUse" in workPrompts)) return false;
+  if (!("weight" in workPrompts)) return false;
+
+  return true;
 }

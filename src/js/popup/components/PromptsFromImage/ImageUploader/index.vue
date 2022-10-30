@@ -13,11 +13,11 @@
         @change="selectImage"
       >
       <p>
-        Drag & Drop to ".png" image made by NovelAI
+        Drag & Drop to ".png" image create by NovelAI
         <br>
         or 
         <br>
-        Click to select ".png" image made by NovelAI
+        Click to select ".png" image create by NovelAI
       </p>
     </div>
   </div>

@@ -7,8 +7,7 @@ import { copy } from "~/js/common/clipboard";
 import { notificate } from "~/js/common/notificate";
 import { 
   setOriginalPrompts as setOriginalPromptsStorage,
-  removeWorkPromptsArray as  removeWorkPromptsArrayStorage,
-  setPromptsBookmarkArray as setPromptsBookmarkArrayToStorage
+  removeWorkPromptsArray as  removeWorkPromptsArrayStorage
 } from '~/js/common/storage';
  
 export function useEnhancer(props) {
@@ -45,28 +44,13 @@ export function useEnhancer(props) {
     visibleAddBookmarkModal.value = false;
   }
 
-  const addPromptsBookmark = (title, prompts) => {
-    const newPromptsBookmark = [
-      ...promptsBookmarkArray,
-      { 
-        title, 
-        prompts,
-        visibleDetail: false
-      }
-    ]
-    promptsBookmarkArray.splice(0);
-    promptsBookmarkArray.push(...newPromptsBookmark);
-    setPromptsBookmarkArrayToStorage(promptsBookmarkArray);
-    notificate("Added PromptsBookmark", `"${title}" bookmark.`);
-  };
-
   return {
     copyPrompts,
     editPrompts,
+    promptsBookmarkArray,
     visibleAddBookmarkModal,
     openAddBookmarkModal,
     closeAddBookmarkModal,
-    addPromptsBookmark,
     addablePromptsBookmark
   }
 }

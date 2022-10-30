@@ -31,7 +31,7 @@
   <AddPromptsBookmarkModal
     v-if="visibleAddBookmarkModal"
     :close="closeAddBookmarkModal"
-    :addPromptsBookmark="addPromptsBookmark"
+    :promptsBookmarkArray="promptsBookmarkArray"
     :intialPrompts="prompts"
     :readonlyPrompts="true"
   />

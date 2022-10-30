@@ -1,7 +1,11 @@
 import { toRef, ref } from "vue";
+import { 
+  setPromptsBookmarkArray as setPromptsBookmarkArrayToStorage
+} from '~/js/common/storage';
+import { notificate } from "~/js/common/notificate";
 
 export function useEnhancer(props) {
-  const { close, addPromptsBookmark } = props
+  const { close, promptsBookmarkArray, addedCallBack } = props
   const intialPrompts = toRef(props, "intialPrompts");
 
   const title = ref("");
@@ -15,16 +19,28 @@ export function useEnhancer(props) {
     prompts.value = event.target.value;
   }
 
-  const addBookmark = () => {
-    addPromptsBookmark(title.value, prompts.value);
+  const addPromptsBookmark = () => {
+    const newPromptsBookmark = [
+      ...promptsBookmarkArray,
+      { 
+        title: title.value, 
+        prompts: prompts.value,
+        visibleDetail: false
+      }
+    ]
+    promptsBookmarkArray.splice(0);
+    promptsBookmarkArray.push(...newPromptsBookmark);
+    setPromptsBookmarkArrayToStorage(promptsBookmarkArray);
+    notificate("Added PromptsBookmark", `"${title.value}" bookmark.`);
     close();
-  }
+    if (addedCallBack) addedCallBack();
+  };
 
   return {
     title,
     prompts,
     inputTitle,
     inputPrompts,
-    addBookmark
+    addPromptsBookmark
   };
 }

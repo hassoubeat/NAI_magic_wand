@@ -5,7 +5,7 @@ import {
 import { notificate } from "~/js/common/notificate";
 
 export function useEnhancer(props) {
-  const { close, promptsBookmarkArray, addedCallBack } = props
+  const { close, promptsBookmarkArray, addedCallBack } = props;
   const intialPrompts = toRef(props, "intialPrompts");
 
   const title = ref("");

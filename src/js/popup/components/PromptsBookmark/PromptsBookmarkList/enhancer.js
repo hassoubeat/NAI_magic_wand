@@ -26,20 +26,8 @@ export function useEnhancer(props) {
     });
   });
 
-  const addPromptsBookmark = (title, prompts) => {
-    const newPromptsBookmark = [
-      ...promptsBookmarkArray,
-      { 
-        title, 
-        prompts,
-        visibleDetail: false
-      }
-    ]
-    promptsBookmarkArray.splice(0);
-    promptsBookmarkArray.push(...newPromptsBookmark);
-    notificate("Added PromptsBookmark", `"${title}" bookmark.`);
-    // want to scroll after element is added
-    sleep(100, bottomToScroll);
+  const addedPromptsBookmarkCallback = () => {
+    sleep(100, bottomToScroll);  
   };
 
   const updatePromptsBookmark = (index, updatePromptsBookmark) => {
@@ -114,7 +102,7 @@ export function useEnhancer(props) {
   return {
     promptsBookmarkArray,
     filteredPromptsBookmarkArray,
-    addPromptsBookmark,
+    addedPromptsBookmarkCallback,
     updatePromptsBookmark,
     removePromptsBookmark,
     visibleAddBookmarkModal,

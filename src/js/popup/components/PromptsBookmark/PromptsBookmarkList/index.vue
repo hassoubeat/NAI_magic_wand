@@ -42,7 +42,8 @@
   <AddPromptsBookmarkModal 
     v-if="visibleAddBookmarkModal"
     :close="closeAddBookmarkModal"
-    :addPromptsBookmark="addPromptsBookmark"
+    :promptsBookmarkArray="promptsBookmarkArray"
+    :addedCallBack="addedPromptsBookmarkCallback"
   />
 </template>
  

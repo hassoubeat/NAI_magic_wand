@@ -52,54 +52,13 @@
     border: none;
     box-sizing: border-box;
   }
-  .curly-bracket {
+  .curly-bracket, .square-bracket {
     position: relative;
     width: 52px;
     height: 30px;
     font-size: 14px;
     text-align: left;
     padding-left: 5px;
-
-    &.x1 {
-      background: #efefef;
-    }
-
-    &.x2 {
-      background: #e6e6e6;
-    }
-
-    &.x3 {
-      background: #dcdcdc;
-    }
-
-    &.x4 {
-      background: #d3d3d3;
-    }
-
-    &.x5 {
-      background: #cccccc;
-    }
-
-    &.x6 {
-      background: #c8c8c8;
-    }
-
-    &.x7 {
-      background: #c0c0c0;
-    }
-
-    &.x8 {
-      background: #adadad;
-    }
-
-    &.x9 {
-      background: #a9a9a9;
-    }
-
-    &.x10 {
-      background: #999999;
-    }
-
 
     .count {
       position: absolute;
@@ -110,7 +69,91 @@
     }
   }
 
-  .update-curly-bracket {
+  .curly-bracket {
+    &.x1 {
+      background: #ffeaea;
+    }
+  
+    &.x2 {
+      background: #ffdddd;
+    }
+  
+    &.x3 {
+      background: #ffd1d1;
+    }
+  
+    &.x4 {
+      background: #ffc4c4;
+    }
+  
+    &.x5 {
+      background: #ffb7b7;
+    }
+  
+    &.x6 {
+      background: #ffaaaa;
+    }
+  
+    &.x7 {
+      background: #ff9e9e;
+    }
+  
+    &.x8 {
+      background: #ff9191;
+    }
+  
+    &.x9 {
+      background: #ff8484;
+    }
+  
+    &.x10 {
+      background: #ff7777;
+    }
+  }
+
+  .square-bracket {
+    &.x1 {
+      background: #eaf3ff;
+    }
+  
+    &.x2 {
+      background: #ddecff;
+    }
+  
+    &.x3 {
+      background: #d1e4ff;
+    }
+  
+    &.x4 {
+      background: #c4ddff;
+    }
+  
+    &.x5 {
+      background: #b7d6ff;
+    }
+  
+    &.x6 {
+      background: #aacfff;
+    }
+  
+    &.x7 {
+      background: #9ec8ff;
+    }
+  
+    &.x8 {
+      background: #91c0ff;
+    }
+  
+    &.x9 {
+      background: #84b9ff;
+    }
+  
+    &.x10 {
+      background: #77b2ff;
+    }
+  }
+
+  .update-weight {
     display: flex;
     flex-direction: column;
     cursor: pointer;

@@ -2,7 +2,8 @@
 import { ref, reactive, computed, onMounted } from "vue";
 import { 
   generateWorkPromptsArrayFromString,
-  generateWorkPromptsStringFromArray
+  generateWorkPromptsStringFromArray,
+  checkCurrentVersionWorkPromptsArray
 } from '~/js/common/prompt';
 import { 
   getOriginalPrompts as getOriginalPromptsStorage,
@@ -45,7 +46,7 @@ export function useEnhancer() {
     originalPrompts.value = await getOriginalPromptsStorage() || "";
     // storage cache or generate from originalPrompts 
     const cacheWorkPromptsArray = await getWorkPromptsArrayStorage();
-    if (cacheWorkPromptsArray) {
+    if (cacheWorkPromptsArray && checkCurrentVersionWorkPromptsArray(cacheWorkPromptsArray)) {
       workPromptsArray.push(...cacheWorkPromptsArray);
     } else {
       workPromptsArray.push(...generateWorkPromptsArrayFromString(originalPrompts.value));

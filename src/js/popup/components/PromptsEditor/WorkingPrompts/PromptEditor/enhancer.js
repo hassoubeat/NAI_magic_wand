@@ -1,11 +1,11 @@
 import { computed } from "vue";
-import { generatePromptsWithCurlyBracket } from '~/js/common/prompt';
+import { generatePromptsWithWeight } from '~/js/common/prompt';
 
 export function useEnhancer(props) {
   const { index, workPrompt, updateWorkPrompt } = props;
 
   const isEditing = computed(() => {
-    return workPrompt.originalPrompt !== generatePromptsWithCurlyBracket(workPrompt.prompt, workPrompt.countCurlyBracket);
+    return workPrompt.originalPrompt !== generatePromptsWithWeight(workPrompt.prompt, workPrompt.weight);
   });
 
   const isNew = computed(() => {
@@ -22,15 +22,15 @@ export function useEnhancer(props) {
     updateWorkPrompt(index, workPrompt);
   }
 
-  const incrementCurlyBracket = () => {
-    if (workPrompt.countCurlyBracket >= 10) return;
-    workPrompt.countCurlyBracket++;
+  const incrementWeight = () => {
+    if (workPrompt.weight >= 10) return;
+    workPrompt.weight++;
     updateWorkPrompt(index, workPrompt);
   }
 
-  const decrementCurlyBracket = () => {
-    if (workPrompt.countCurlyBracket <= 0) return;
-    workPrompt.countCurlyBracket--;
+  const decrementWeight = () => {
+    if (workPrompt.weight <= -10) return;
+    workPrompt.weight--;
     updateWorkPrompt(index, workPrompt);
   }
 
@@ -39,7 +39,7 @@ export function useEnhancer(props) {
     isNew,
     toggleUse,
     updatePrompt,
-    incrementCurlyBracket,
-    decrementCurlyBracket
+    incrementWeight,
+    decrementWeight
   };
 }

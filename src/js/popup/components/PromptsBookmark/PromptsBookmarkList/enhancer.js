@@ -1,17 +1,14 @@
 
 import getObjectHash from "object-hash";
 import { PROMPTS_BOOKMARKS_LIMIT } from "~/js/common/const";
-import { toRef, ref, reactive, computed, watch, onMounted } from 'vue';
+import { toRef, reactive, computed, watch, onMounted } from 'vue';
 import { 
   getPromptsBookmarkArray as getPromptsBookmarkArrayFromStorage,
   setPromptsBookmarkArray as setPromptsBookmarkArrayToStorage
 } from '~/js/common/storage';
-import { bottomToScroll } from "~/js/common/scroll";
-import { sleep } from "~/js/common/sleep";
  
 export function useEnhancer(props) {
   const filterWord = toRef(props, "filterWord");
-  const visibleAddBookmarkModal = ref(false);
   const promptsBookmarkArray = reactive([]);
 
   const filteredPromptsBookmarkArray = computed(() => {
@@ -25,10 +22,6 @@ export function useEnhancer(props) {
     });
   });
 
-  const addedPromptsBookmarkCallback = () => {
-    sleep(100, bottomToScroll);  
-  };
-
   const updatePromptsBookmark = (index, updatePromptsBookmark) => {
     promptsBookmarkArray[index] = updatePromptsBookmark;
   }
@@ -40,14 +33,6 @@ export function useEnhancer(props) {
   watch(promptsBookmarkArray, (next) => {
     setPromptsBookmarkArrayToStorage(next);
   });
-
-  const openAddBookmarkModal = () => {
-    visibleAddBookmarkModal.value = true;
-  }
-  
-  const closeAddBookmarkModal = () => {
-    visibleAddBookmarkModal.value = false;
-  }
 
   // drag process
 
@@ -101,12 +86,8 @@ export function useEnhancer(props) {
   return {
     promptsBookmarkArray,
     filteredPromptsBookmarkArray,
-    addedPromptsBookmarkCallback,
     updatePromptsBookmark,
     removePromptsBookmark,
-    visibleAddBookmarkModal,
-    openAddBookmarkModal,
-    closeAddBookmarkModal,
     draggable,
     dragStartPromptsBookmark,
     dropPromptsBookmark,

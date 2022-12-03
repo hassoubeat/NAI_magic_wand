@@ -1,6 +1,7 @@
 <template>
   <button
     :disabled="promptsBookmarkArray.length <= 0"
+    @click="exportBookmarks"
   >
     Export bookmarks
   </button>
@@ -17,8 +18,8 @@ export default {
       required: true,
     }
   },
-  setup() {
-    return useEnhancer();
+  setup(props) {
+    return useEnhancer(props);
   }
 }
 </script>

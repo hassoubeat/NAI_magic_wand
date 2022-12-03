@@ -1,0 +1,27 @@
+button {
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px;
+  background: white;
+  border: 1px solid gray;
+  text-align: center;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    background-image: url("~/src/image/icons/export.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 12px;
+    height: 12px;
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+}

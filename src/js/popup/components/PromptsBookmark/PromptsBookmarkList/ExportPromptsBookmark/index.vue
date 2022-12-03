@@ -1,35 +1,16 @@
 <template>
-  <div class="add-bookmark-modal-open-button-container">
-    <button
-      v-if="promptsBookmarkArray.length < promptsBookmarksLimited"
-      @click="openAddBookmarkModal"
-    >
-      + Add Bookmark ({{ promptsBookmarkArray.length }} / {{ promptsBookmarksLimited }})
-    </button>
-    <button
-      v-if="promptsBookmarkArray.length >= promptsBookmarksLimited"
-      disabled
-    >
-      Up to {{ promptsBookmarksLimited }} bookmarks...
-    </button>
-  </div>
-  <AddPromptsBookmarkModal 
-    v-if="visibleAddBookmarkModal"
-    :close="closeAddBookmarkModal"
-    :promptsBookmarkArray="promptsBookmarkArray"
-    :addedCallBack="addedPromptsBookmarkCallback"
-  />
+  <button
+    :disabled="promptsBookmarkArray.length <= 0"
+  >
+    Export bookmarks
+  </button>
 </template>
  
 <script>
 
-import AddPromptsBookmarkModal from "~/js/popup/components/common/AddPromptsBookmarkModal/index.vue";
 import { useEnhancer } from "./enhancer";
  
 export default {
-  components: {
-    AddPromptsBookmarkModal
-  },
   props: {
     promptsBookmarkArray: {
       type: Array,

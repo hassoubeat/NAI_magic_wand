@@ -24,6 +24,9 @@
       @dragover.prevent
       @dragenter.prevent
     />
+    <ExportPromptsBookmark
+      :promptsBookmarkArray="promptsBookmarkArray"
+    />
   </div>
   <AddPromptsBookmark
     :promptsBookmarkArray="promptsBookmarkArray"
@@ -33,12 +36,14 @@
 <script>
 
 import PromptsBookmarkItem from "./PromptsBookmarkItem/index.vue";
+import ExportPromptsBookmark from "./ExportPromptsBookmark/index.vue";
 import AddPromptsBookmark from "./AddPromptsBookmark/index.vue";
 import { useEnhancer } from "./enhancer";
  
 export default {
   components: {
     PromptsBookmarkItem,
+    ExportPromptsBookmark,
     AddPromptsBookmark
   },
   props: {

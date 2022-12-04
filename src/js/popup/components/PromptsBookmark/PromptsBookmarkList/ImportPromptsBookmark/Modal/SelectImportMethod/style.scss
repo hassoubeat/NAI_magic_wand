@@ -1,0 +1,15 @@
+.import-method-select {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  input[type="radio"] {
+    margin: 4px;
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 700;
+  }
+}

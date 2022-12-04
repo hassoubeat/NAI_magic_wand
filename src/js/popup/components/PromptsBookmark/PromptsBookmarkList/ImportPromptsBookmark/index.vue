@@ -1,25 +1,33 @@
 <template>
   <button
-    :disabled="promptsBookmarkArray.length <= 0"
-    @click="exportBookmarks"
+    @click="openImportBookmarksModal"
   >
-    Export bookmarks
+    Import Bookmarks
   </button>
+  <ImportBookmarksModal 
+    v-if="visibleImportBookmarksModal"
+    :close="closeImportBookmarksModal"
+    :promptsBookmarkArray="promptsBookmarkArray"
+  />
 </template>
- 
+
 <script>
 
+import ImportBookmarksModal from "./Modal/index.vue";
 import { useEnhancer } from "./enhancer";
  
 export default {
+  components: {
+    ImportBookmarksModal
+  },
   props: {
     promptsBookmarkArray: {
       type: Array,
       required: true,
     }
   },
-  setup(props) {
-    return useEnhancer(props);
+  setup() {
+    return useEnhancer();
   }
 }
 </script>

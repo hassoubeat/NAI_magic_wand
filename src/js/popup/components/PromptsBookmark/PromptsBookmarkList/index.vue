@@ -24,9 +24,14 @@
       @dragover.prevent
       @dragenter.prevent
     />
-    <ExportPromptsBookmark
-      :promptsBookmarkArray="promptsBookmarkArray"
-    />
+    <div class="prompts-bookmark-io-menu">
+      <ImportPromptsBookmark
+        :promptsBookmarkArray="promptsBookmarkArray"
+      />
+      <ExportPromptsBookmark
+        :promptsBookmarkArray="promptsBookmarkArray"
+      />
+    </div>
   </div>
   <AddPromptsBookmark
     :promptsBookmarkArray="promptsBookmarkArray"
@@ -36,6 +41,7 @@
 <script>
 
 import PromptsBookmarkItem from "./PromptsBookmarkItem/index.vue";
+import ImportPromptsBookmark from "./ImportPromptsBookmark/index.vue";
 import ExportPromptsBookmark from "./ExportPromptsBookmark/index.vue";
 import AddPromptsBookmark from "./AddPromptsBookmark/index.vue";
 import { useEnhancer } from "./enhancer";
@@ -43,6 +49,7 @@ import { useEnhancer } from "./enhancer";
 export default {
   components: {
     PromptsBookmarkItem,
+    ImportPromptsBookmark,
     ExportPromptsBookmark,
     AddPromptsBookmark
   },
@@ -59,7 +66,5 @@ export default {
 </script>
  
 <style lang="scss" scoped>
-  .prompts-bookmark-list {
-    margin-bottom: 40px;
-  }
+  @import './style.scss';
 </style>

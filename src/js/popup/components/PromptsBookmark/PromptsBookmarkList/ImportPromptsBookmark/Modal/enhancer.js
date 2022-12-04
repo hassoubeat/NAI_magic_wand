@@ -33,7 +33,7 @@ export function useEnhancer(props) {
     reader.readAsText(event.target.files[0], 'UTF-8');
     reader.onload = () => {
       try {
-        importProcess(importMethod.value, new ImportObject(reader.result), promptsBookmarkArray)
+        new ImportObject(importMethod.value, reader.result, promptsBookmarkArray).import();
         close();
       } catch (error) {
         importErrorMessage.value = (error);
@@ -55,7 +55,10 @@ export function useEnhancer(props) {
 }
 
 class ImportObject {
-  constructor(importObjectStr) {
+  constructor(importMethod, importObjectStr, promptsBookmarkArray) {
+    this.importMethod = importMethod;
+    this.promptsBookmarkArray = promptsBookmarkArray;
+
     let importObject = null;
     try {
       importObject = JSON.parse(importObjectStr)
@@ -81,33 +84,33 @@ class ImportObject {
       }
     });
   }
-}
 
-function importProcess(importMethod, importObject, promptsBookmarkArray) {
-  const importPromptsBookmarkArray = importObject.getPromptsBookmarks();
-
-  let newPromptsBookmarkArray = null;
-  switch (importMethod) {
-    case IMPORT_ADD_METHOD:
-      newPromptsBookmarkArray = [
-        ...promptsBookmarkArray,
-        ...importPromptsBookmarkArray
-      ];
-      break;
-    case IMPORT_OVERWRITE_METHOD:
-      newPromptsBookmarkArray = [...importPromptsBookmarkArray]
-      break;
-    default:
-      throw "Please select import method.";
-  }
-
-  if (newPromptsBookmarkArray.length > PROMPTS_BOOKMARKS_LIMIT) {
-    throw `Over bookmarks size(${newPromptsBookmarkArray.length}/${PROMPTS_BOOKMARKS_LIMIT}).`;
-  }
+  import() {
+    const importPromptsBookmarkArray = this.getPromptsBookmarks();
   
-  promptsBookmarkArray.splice(0);
-  promptsBookmarkArray.push(...newPromptsBookmarkArray);
-  setPromptsBookmarkArrayToStorage(promptsBookmarkArray);
-
-  notificate("Imported PromptsBookmark", `${importMethod} ${importPromptsBookmarkArray.length} bookmarks.`);
+    let newPromptsBookmarkArray = null;
+    switch (this.importMethod) {
+      case IMPORT_ADD_METHOD:
+        newPromptsBookmarkArray = [
+          ...this.promptsBookmarkArray,
+          ...importPromptsBookmarkArray
+        ];
+        break;
+      case IMPORT_OVERWRITE_METHOD:
+        newPromptsBookmarkArray = [...importPromptsBookmarkArray]
+        break;
+      default:
+        throw "Please select import method.";
+    }
+  
+    if (newPromptsBookmarkArray.length > PROMPTS_BOOKMARKS_LIMIT) {
+      throw `Over bookmarks size(${newPromptsBookmarkArray.length}/${PROMPTS_BOOKMARKS_LIMIT}).`;
+    }
+    
+    this.promptsBookmarkArray.splice(0);
+    this.promptsBookmarkArray.push(...newPromptsBookmarkArray);
+    setPromptsBookmarkArrayToStorage(this.promptsBookmarkArray);
+  
+    notificate("Imported PromptsBookmark", `${this.importMethod} ${importPromptsBookmarkArray.length} bookmarks.`);
+  }
 }

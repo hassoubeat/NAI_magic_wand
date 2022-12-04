@@ -2,13 +2,17 @@ import {
   PROMPTS_BOOKMARKS_EXPORT_FILE_IDENTIFIER,
   PROMPTS_BOOKMARKS_EXPORT_FILE_LATEST_VERSION
 } from "~/js/common/const";
-import { toRaw } from 'vue';
+import { toRef, toRaw } from 'vue';
  
 export function useEnhancer(props) {
-  const { promptsBookmarkArray } = props;
+  const promptsBookmarkArray = toRef(props, "promptsBookmarkArray");
 
   const exportBookmarks = () => {
-    const exportBookmarksJSON = generateExportBookmarksJSON(toRaw(promptsBookmarkArray))
+    const exportBookmarksJSON = generateExportBookmarksJSON(
+      promptsBookmarkArray.value.map((obj) => {
+        return toRaw(obj.promptBookmark)
+      })
+    );
     const exportBookmarksStr = JSON.stringify(exportBookmarksJSON, null, 2);
     const blob = new Blob([exportBookmarksStr], { type: 'application/json' });
     const downloadLink = document.createElement('a');

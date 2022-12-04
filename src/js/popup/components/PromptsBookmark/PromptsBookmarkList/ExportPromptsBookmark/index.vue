@@ -3,7 +3,7 @@
     :disabled="promptsBookmarkArray.length <= 0"
     @click="exportBookmarks"
   >
-    Export bookmarks
+    Export Bookmarks
   </button>
 </template>
  

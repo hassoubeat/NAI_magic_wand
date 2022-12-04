@@ -29,7 +29,7 @@
         :promptsBookmarkArray="promptsBookmarkArray"
       />
       <ExportPromptsBookmark
-        :promptsBookmarkArray="promptsBookmarkArray"
+        :promptsBookmarkArray="filteredPromptsBookmarkArray"
       />
     </div>
   </div>

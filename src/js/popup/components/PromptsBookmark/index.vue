@@ -37,7 +37,7 @@ export default {
  
 <style lang="scss" scoped>
   .prompts-bookmark {
-    min-height: 150px;
+    min-height: 100px;
     .title {
       font-size: 20px;
       font-weight: 700;

@@ -1,0 +1,23 @@
+.add-bookmark-modal-open-button-container {
+  position: fixed;
+  bottom: 12px;
+  left: 0px;
+  right: 0px;
+  margin: auto 8px;
+
+  button {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 4px;
+    background: white;
+    border: 1px solid gray;
+    text-align: center;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.8;
+      cursor: not-allowed;
+    }
+  }
+}
